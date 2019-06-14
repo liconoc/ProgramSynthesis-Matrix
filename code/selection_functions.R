@@ -28,6 +28,7 @@ selecting_functions <- function (A, B, functions, d_max){
     
     ##Each column of c is a combination
     for(combination in 1:ncol(c)){
+      #print(c[,combination])
       #if(found){break}
       suppressWarnings(remove(m_output))
       suppressWarnings(remove(n_output))
@@ -45,6 +46,7 @@ selecting_functions <- function (A, B, functions, d_max){
         
         
         f<-c[i,combination]
+        #print(f)
         
         ##If the function has a min m or n
         if(!is.na(as.character(functions[which(functions$f==f),"m_min"]))){
@@ -73,6 +75,8 @@ selecting_functions <- function (A, B, functions, d_max){
             m_output<-m_input
           }else if(as.character(functions[which(functions$f==f),"m_o"])=="n"){
             m_output<-n_input
+          }else if(as.character(functions[which(functions$f==f),"m_o"])=="m*n"){
+            m_output<-m_input*n_input
           }else{
             m_output<-1
           }
@@ -81,6 +85,10 @@ selecting_functions <- function (A, B, functions, d_max){
             n_output<-m_input
           }else if(as.character(functions[which(functions$f==f),"n_o"])=="n"){
             n_output<-n_input
+          }else if(as.character(functions[which(functions$f==f),"n_o"])=="2"){
+            n_output<-2
+          }else if(as.character(functions[which(functions$f==f),"n_o"])=="3"){
+            n_output<-3
           }else{
             n_output<-1
           }
@@ -89,16 +97,21 @@ selecting_functions <- function (A, B, functions, d_max){
       }#for i
       
       ##If the size of the result match the size of B, return the function
-      if(m_output==m_ && n_output==n_){
+
         
        A_<-A
+       tryCatch({
+         
        for(j in 1:length(c[,combination])){
          if(is.null(nrow(A_))){
            A_=as.matrix(rbind(A_))
-           A_<-do.call(str_replace(c[,combination][j], "\\(M\\)", ""), args = list(A_))
-           c[,combination][j]<-str_replace(c[,combination][j], "\\(M\\)", paste("\\(as.matrix\\(rbind\\(M\\)\\)\\)",sep = ""))
+           
+           #A_<-do.call(str_replace(c[,combination][j], "\\(A\\)", ""), args = list(A_))
+           A_<-eval(parse(text = str_replace_all(c[,combination][j], "A", "A_")))
+           c[,combination][j]<-str_replace_all(c[,combination][j], "A", paste("\\(as.matrix\\(rbind\\(A\\)\\)\\)",sep = ""))
          }else{
-           A_<-do.call(str_replace(c[,combination][j], "\\(M\\)", ""), args = list(A_))
+           #A_<-do.call(str_replace(c[,combination][j], "\\(A\\)", ""), args = list(A_))
+           A_<-eval(parse(text = str_replace_all(c[,combination][j], "A", "A_")))
          }
          
          
@@ -116,8 +129,9 @@ selecting_functions <- function (A, B, functions, d_max){
          
        }
        
-       tryCatch({
-         if(sum(which((round(A_,2)==round(B,2))==TRUE))>0){
+       
+      
+         if(typeof(B) == typeof(A_) && (length(which((round(A_,2)==round(B,2)))))==length(which(!is.na(B))) ){
            #result<-list (result, as.vector(c[,combination]))
            solution<-as.vector(c[,combination])
            if(length(solution)==1){
@@ -129,7 +143,7 @@ selecting_functions <- function (A, B, functions, d_max){
                if(i==length(solution)){
                  solution_=solution[i]
                }else{
-                 solution_=str_replace(solution_,"\\(M\\)",paste("\\(",solution[i],"\\)",sep = ""))
+                 solution_=str_replace_all(solution_,"A",solution[i])
                }
              }
              #result=c(result,solution_)
@@ -144,7 +158,7 @@ selecting_functions <- function (A, B, functions, d_max){
        
        #if(found){break}
         
-      }
+      #}
       if(found){break}
 
     }#for combination
@@ -156,7 +170,8 @@ selecting_functions <- function (A, B, functions, d_max){
 }
 
 
-######Real example
+######example
+
 functions<-read.csv("r_functions.csv", header = TRUE, row.names = NULL)
 d_max=5
 
@@ -168,18 +183,3 @@ selecting_functions(A,B1,functions,d_max)
 B2=t(as.matrix(c(0.38,NA,NA,NA,NA)))
 selecting_functions(A,B2,functions,d_max)
 
-
-###Test
-functions<-read.csv("r_functions.csv", header = TRUE, row.names = NULL)
-d_max=5
-results=data.frame(stringsAsFactors = FALSE)
-for(a in 1:10){
-  for(s in 1:10){
-    print(paste("Trying: A",a," with S",s,sep = ""))
-    A=as.matrix(read.csv(paste("data/A_",a,".csv", sep = "")))
-    B=as.matrix(read.csv(paste("data/A_",a,"-B_",s,".csv", sep = "")))
-    print(selecting_functions(A,B,functions,d_max))
-    results=rbind(results, cbind(as.character(a),as.character(s),selecting_functions(A,B,functions,d_max)))
-  }
-}
-write.csv(results,"results.csv")
