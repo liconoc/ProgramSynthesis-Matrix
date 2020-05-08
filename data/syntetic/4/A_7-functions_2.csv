@@ -1,0 +1,5 @@
+"x"
+"!is.na(A)"
+"max(A)"
+"length(A)"
+"diag(A)"

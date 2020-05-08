@@ -1,0 +1,4 @@
+"x"
+"max(A)"
+"rbind(A,A)"
+"diag(A)"

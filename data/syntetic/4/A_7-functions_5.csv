@@ -1,0 +1,5 @@
+"x"
+"apply(A,1,rev)"
+"apply(A,1,rev)"
+"nrow(A)"
+"length(A)"

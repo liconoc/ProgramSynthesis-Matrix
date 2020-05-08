@@ -1,0 +1,4 @@
+"x"
+"is.na(A)"
+"cbind(A,A)"
+"ncol(A)"

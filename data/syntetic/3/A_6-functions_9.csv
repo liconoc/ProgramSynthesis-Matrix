@@ -1,0 +1,4 @@
+"x"
+"rbind(A,A)"
+"colSums(A)"
+"is.na(A)"

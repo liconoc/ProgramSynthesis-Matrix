@@ -1,0 +1,4 @@
+"x"
+"nrow(A)"
+"!is.na(A)"
+"ncol(A)"

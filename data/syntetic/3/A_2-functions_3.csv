@@ -1,0 +1,4 @@
+"x"
+"apply(A,2,rev)"
+"min(A)"
+"!is.na(A)"

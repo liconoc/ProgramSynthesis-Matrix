@@ -1,0 +1,4 @@
+"x"
+"length(A)"
+"rbind(A,A)"
+"apply(A,1,rev)"

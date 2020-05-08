@@ -1,0 +1,4 @@
+"x"
+"cbind(A,A)"
+"length(A)"
+"rbind(A,A)"

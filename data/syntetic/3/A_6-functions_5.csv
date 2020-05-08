@@ -1,0 +1,4 @@
+"x"
+"diag(A)"
+"cbind(A,A)"
+"rbind(A,A)"

@@ -1,0 +1,4 @@
+"x"
+"is.na(A)"
+"apply(A,1,rev)"
+"rowSums(A)"

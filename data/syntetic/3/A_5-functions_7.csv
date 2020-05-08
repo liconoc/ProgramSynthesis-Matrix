@@ -1,0 +1,4 @@
+"x"
+"t(A)"
+"apply(A,1,rev)"
+"length(A)"

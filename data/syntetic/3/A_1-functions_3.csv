@@ -1,0 +1,4 @@
+"x"
+"length(A)"
+"cbind(A,A)"
+"nrow(A)"

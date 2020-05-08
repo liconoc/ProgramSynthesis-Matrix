@@ -1,0 +1,4 @@
+"x"
+"!is.na(A)"
+"nrow(A)"
+"cbind(A,A)"

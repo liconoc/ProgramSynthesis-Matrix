@@ -1,0 +1,5 @@
+"x"
+"cbind(A,A)"
+"mean(A)"
+"length(A)"
+"t(A)"

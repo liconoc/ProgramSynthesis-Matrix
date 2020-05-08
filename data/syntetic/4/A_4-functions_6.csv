@@ -1,0 +1,5 @@
+"x"
+"apply(A,2,rev)"
+"length(A)"
+"!is.na(A)"
+"!is.na(A)"

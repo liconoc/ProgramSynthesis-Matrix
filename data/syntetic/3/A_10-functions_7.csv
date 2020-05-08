@@ -1,0 +1,4 @@
+"x"
+"!is.na(A)"
+"mean(A)"
+"length(A)"

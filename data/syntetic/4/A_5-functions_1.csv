@@ -1,0 +1,5 @@
+"x"
+"!is.na(A)"
+"apply(A,2,rev)"
+"rowMeans(A)"
+"diag(A)"

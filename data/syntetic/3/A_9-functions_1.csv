@@ -1,0 +1,4 @@
+"x"
+"cbind(A,A)"
+"t(A)"
+"!is.na(A)"

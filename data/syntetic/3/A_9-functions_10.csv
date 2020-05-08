@@ -1,0 +1,4 @@
+"x"
+"apply(A,1,rev)"
+"min(A)"
+"nrow(A)"

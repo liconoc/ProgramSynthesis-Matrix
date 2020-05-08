@@ -1,0 +1,4 @@
+"x"
+"rowSums(A)"
+"cbind(A,A)"
+"!is.na(A)"
