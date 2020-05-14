@@ -1,5 +1,0 @@
-"x"
-"apply(A,1,rev)"
-"length(A)"
-"max(A)"
-"rbind(A,A)"

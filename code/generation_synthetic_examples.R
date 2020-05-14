@@ -1,6 +1,6 @@
 library(stringr)
 library(gtools)
-functions<-read.csv("data/r_functions.csv", header = TRUE, row.names = NULL)
+functions<-read.csv("data/functions.csv", header = TRUE, row.names = NULL)
 probs<-read.csv("data/prior_probs.csv", sep = ";")
 
 set.seed(1)

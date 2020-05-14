@@ -1,5 +1,0 @@
-"x"
-"rbind(A,A)"
-"!is.na(A)"
-"diag(A)"
-"sum(A)"

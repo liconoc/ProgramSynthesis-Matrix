@@ -1,5 +1,0 @@
-"x"
-"ncol(A)"
-"length(A)"
-"cbind(A,A)"
-"apply(A,2,rev)"

@@ -1,5 +1,0 @@
-"x"
-"!is.na(A)"
-"is.na(A)"
-"cbind(A,A)"
-"max(A)"

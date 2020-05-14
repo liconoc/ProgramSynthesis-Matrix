@@ -1,5 +1,0 @@
-"x"
-"!is.na(A)"
-"diag(A)"
-"length(A)"
-"cbind(A,A)"

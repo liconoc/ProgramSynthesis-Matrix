@@ -1,4 +1,0 @@
-"x"
-"is.na(A)"
-"apply(A,1,rev)"
-"cbind(A,A)"

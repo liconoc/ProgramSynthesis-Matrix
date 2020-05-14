@@ -1,5 +1,0 @@
-"x"
-"nrow(A)"
-"cbind(A,A)"
-"A>=0"
-"length(A)"
