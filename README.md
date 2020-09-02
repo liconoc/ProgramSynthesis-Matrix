@@ -34,18 +34,31 @@ To encourage future research all the data is published in the data folder.
 To use the code of AUTOMAT[R]IX just follow the following steps:
 
 1. Load code\algorithm.R and its functions (the file data\prior_probs.csv should be available).
+
 2. Create or load a matrix A, for instance:
+
 	A <- matrix(c(NA,1,NA,1,NA,2,NA,NA,NA,1,2,3), ncol=4)
+	
 3. Create or load a matrix B (the output matrix) with some empty values as "NA", for instance:
+
 	B=matrix(rep(c(NA,NA,NA,NA),3), byrow=TRUE, nrow=3)
+	
 	B[1,1]=TRUE
+	
 	B[1,2]=FALSE
+	
 4. Call the function automatrix(text, A, B, d_max, s_max, functions) where the parameters are as follows:
+
 	text: The string provided by the user as tip, for instance: "Get positions for NA"
+	
 	A: Matrix A
+	
 	B: Matrix B
+	
 	d_max: Maximum number of functions allowed in the solution
+	
 	s_max: Maximum number of solutions to find
+	
 	functions: A csv file including the functions to use as Background Knowledge. The format of the file can be done by following the one of data\functions.csv
 	
 	
